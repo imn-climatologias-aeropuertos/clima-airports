@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "clima-airports"
+version = "0.1.0"
+description = ""
+authors = ["diego-garro <diego.garromolina@yahoo.com>"]
+readme = "README.md"
+packages = [{include = "clima_airports", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
