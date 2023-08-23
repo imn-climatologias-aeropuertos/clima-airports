@@ -178,3 +178,6 @@ pyrightconfig.json
 # trash folder
 trash
 .trash
+
+# vscode
+.vscode
