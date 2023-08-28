@@ -9,6 +9,7 @@ packages = [{include = "clima_airports", from = "src"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 pydantic = "^2.2.1"
+pandas = "^2.0.3"
 
 
 [tool.poetry.group.dev.dependencies]
