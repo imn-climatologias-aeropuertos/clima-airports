@@ -23,3 +23,19 @@ def test_by_year_range(data):
     expected = np.array([2005, 2009, 2014, 2018])
 
     assert np.array_equal(result, expected)
+
+
+def test_by_month_unique(data):
+    df = queries.by_month(data, 1)
+    result = df["month"].unique()
+    expected = np.array([1])
+
+    assert np.array_equal(result, expected)
+
+
+def test_by_month_range(data):
+    df = queries.by_month(data, 1, end=9)
+    result = df["month"].unique()
+    expected = np.array([1, 8])
+
+    assert np.array_equal(result, expected)

@@ -75,3 +75,20 @@ def by_year(df: pd.DataFrame, start: int, end: Optional[int] = None) -> pd.DataF
         return df.query(f"index.dt.year == {start}")
 
     return df.query(f"index.dt.year >= {start} and index.dt.year < {end}")
+
+
+def by_month(df: pd.DataFrame, start: int, end: Optional[int] = None) -> pd.DataFrame:
+    """Returns a DataFrame selected by the `start` and `end` (if provided, excluded) months.
+
+    Args:
+        df (pd.DataFrame): The data
+        start (int).
+        end (Optional[int], optional): Defaults to None.
+
+    Returns:
+        pd.DataFrame
+    """
+    if end is None:
+        return df.query(f"index.dt.month == {start}")
+
+    return df.query(f"index.dt.month >= {start} and index.dt.month < {end}")
