@@ -39,3 +39,20 @@ def test_by_month_range(data):
     expected = np.array([1, 8])
 
     assert np.array_equal(result, expected)
+
+
+def test_by_day_unique(data):
+    df = queries.by_day(data, 3)
+    result = df["day"].unique()
+    expected = np.array([3])
+
+    assert np.array_equal(result, expected)
+
+
+def test_by_day_range(data):
+    df = queries.by_day(data, 1, end=24)
+    result = df["day"].unique()
+    result.sort()
+    expected = np.array([1, 3, 4, 18, 23])
+
+    assert np.array_equal(result, expected)

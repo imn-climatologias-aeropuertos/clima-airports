@@ -64,8 +64,8 @@ def by_year(df: pd.DataFrame, start: int, end: Optional[int] = None) -> pd.DataF
     """Returns a DataFrame selected by the `start` and `end` (if provided, excluded) years.
 
     Args:
-        df (pd.DataFrame): The data
-        start (int).
+        df (pd.DataFrame)
+        start (int)
         end (Optional[int], optional): Defaults to None.
 
     Returns:
@@ -81,8 +81,8 @@ def by_month(df: pd.DataFrame, start: int, end: Optional[int] = None) -> pd.Data
     """Returns a DataFrame selected by the `start` and `end` (if provided, excluded) months.
 
     Args:
-        df (pd.DataFrame): The data
-        start (int).
+        df (pd.DataFrame)
+        start (int)
         end (Optional[int], optional): Defaults to None.
 
     Returns:
@@ -92,3 +92,20 @@ def by_month(df: pd.DataFrame, start: int, end: Optional[int] = None) -> pd.Data
         return df.query(f"index.dt.month == {start}")
 
     return df.query(f"index.dt.month >= {start} and index.dt.month < {end}")
+
+
+def by_day(df: pd.DataFrame, start: int, end: Optional[int] = None) -> pd.DataFrame:
+    """Returns a DataFrame selected by the `start` and `end` (if provided, excluded) days.
+
+    Args:
+        df (pd.DataFrame)
+        start (int)
+        end (Optional[int], optional): Defaults to None.
+
+    Returns:
+        pd.DataFrame
+    """
+    if end is None:
+        return df.query(f"index.dt.day == {start}")
+
+    return df.query(f"index.dt.day >= {start} and index.dt.day < {end}")
