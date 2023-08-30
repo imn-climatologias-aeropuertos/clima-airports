@@ -56,3 +56,20 @@ def test_by_day_range(data):
     expected = np.array([1, 3, 4, 18, 23])
 
     assert np.array_equal(result, expected)
+
+
+def test_by_hour_unique(data):
+    df = queries.by_hour(data, 15)
+    result = df["hour"].unique()
+    expected = np.array([15])
+
+    assert np.array_equal(result, expected)
+
+
+def test_by_hour_range(data):
+    df = queries.by_hour(data, 0, end=14)
+    result = df["hour"].unique()
+    result.sort()
+    expected = np.array([0, 1, 2, 12, 13])
+
+    assert np.array_equal(result, expected)

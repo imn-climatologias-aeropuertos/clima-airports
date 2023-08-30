@@ -109,3 +109,20 @@ def by_day(df: pd.DataFrame, start: int, end: Optional[int] = None) -> pd.DataFr
         return df.query(f"index.dt.day == {start}")
 
     return df.query(f"index.dt.day >= {start} and index.dt.day < {end}")
+
+
+def by_hour(df: pd.DataFrame, start: int, end: Optional[int] = None) -> pd.DataFrame:
+    """Returns a DataFrame selected by the `start` and `end` (if provided, excluded) hours.
+
+    Args:
+        df (pd.DataFrame)
+        start (int)
+        end (Optional[int], optional): Defaults to None.
+
+    Returns:
+        pd.DataFrame
+    """
+    if end is None:
+        return df.query(f"index.dt.hour == {start}")
+
+    return df.query(f"index.dt.hour >= {start} and index.dt.hour < {end}")
