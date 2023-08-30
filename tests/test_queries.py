@@ -9,6 +9,13 @@ def data():
     return queries.read_metars_csv(filepath="./tests/mocks/data/metars.csv")
 
 
+def test_read_metars_csv(data):
+    result = data["minute"].unique()
+    expected = np.array([0])
+
+    assert np.array_equal(result, expected)
+
+
 def test_by_year_unique(data):
     df = queries.by_year(data, 2009)
     result = df["year"].unique()

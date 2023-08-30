@@ -56,6 +56,7 @@ def read_metars_csv(
             f"./data/{station_name}/metars.csv", parse_dates=["date"], usecols=columns
         )
     df = df.set_index(["date"])
+    df = df.query("index.dt.minute == 0")
 
     return df
 
